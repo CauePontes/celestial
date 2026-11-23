@@ -10,7 +10,12 @@ import '../../core/widgets/components.dart';
 import '../../core/widgets/stitch_layout.dart';
 
 class HoroscopeScreen extends ConsumerStatefulWidget {
-  const HoroscopeScreen({super.key, this.initialSign = 6,this.initialPeriod=0,this.initialDate});
+  const HoroscopeScreen({
+    super.key,
+    this.initialSign = 6,
+    this.initialPeriod = 0,
+    this.initialDate,
+  });
   final int initialSign;
   final int initialPeriod;
   final DateTime? initialDate;
@@ -26,8 +31,8 @@ class _HoroscopeState extends ConsumerState<HoroscopeScreen> {
   void initState() {
     super.initState();
     sign = widget.initialSign.clamp(0, 11);
-    period=widget.initialPeriod.clamp(0,2);
-    date=widget.initialDate??DateTime.now();
+    period = widget.initialPeriod.clamp(0, 2);
+    date = widget.initialDate ?? DateTime.now();
     Future.microtask(
       () => ref.read(prototypeProvider.notifier).recordReading(),
     );

@@ -193,14 +193,20 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       page('/discover', (c, s) => const DiscoverScreen()),
-      page('/calendar', (c, s) => CosmicCalendarScreen(initialMonth:DateTime.tryParse(s.uri.queryParameters['month']??''))),
+      page(
+        '/calendar',
+        (c, s) => CosmicCalendarScreen(
+          initialMonth: DateTime.tryParse(s.uri.queryParameters['month'] ?? ''),
+        ),
+      ),
       page('/notifications', (c, s) => const NotificationsScreen()),
       page(
         '/horoscope',
         (c, s) => HoroscopeScreen(
           initialSign: int.tryParse(s.uri.queryParameters['sign'] ?? '6') ?? 6,
-          initialPeriod: int.tryParse(s.uri.queryParameters['period']??'0')??0,
-          initialDate:DateTime.tryParse(s.uri.queryParameters['date']??''),
+          initialPeriod:
+              int.tryParse(s.uri.queryParameters['period'] ?? '0') ?? 0,
+          initialDate: DateTime.tryParse(s.uri.queryParameters['date'] ?? ''),
         ),
       ),
       page('/zodiac', (c, s) => const ZodiacSignsScreen()),

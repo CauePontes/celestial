@@ -126,13 +126,25 @@ void main() {
     );
   });
 
-  testWidgets('favorites restore the saved period sign and date',(tester)async{
-    final container=await launchPrototype(tester,route:'/favorites');
-    container.read(prototypeProvider.notifier).toggleSaved('horoscope-3-1-2026-11-22');
+  testWidgets('favorites restore the saved period sign and date', (
+    tester,
+  ) async {
+    final container = await launchPrototype(tester, route: '/favorites');
+    container
+        .read(prototypeProvider.notifier)
+        .toggleSaved('horoscope-3-1-2026-11-22');
     await settlePrototype(tester);
-    await tapVisible(tester,find.text('Horoscope'));
-    expect(find.text('Harmonies built on patient timing'),findsOneWidget);
-    expect(find.text('November 22, 2026'),findsOneWidget);
-    expect(container.read(routerProvider).routeInformationProvider.value.uri.queryParameters['sign'],'3');
+    await tapVisible(tester, find.text('Horoscope'));
+    expect(find.text('Harmonies built on patient timing'), findsOneWidget);
+    expect(find.text('November 22, 2026'), findsOneWidget);
+    expect(
+      container
+          .read(routerProvider)
+          .routeInformationProvider
+          .value
+          .uri
+          .queryParameters['sign'],
+      '3',
+    );
   });
 }

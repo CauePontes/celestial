@@ -11,7 +11,7 @@ import '../../core/widgets/components.dart';
 import '../../core/widgets/stitch_layout.dart';
 
 class CosmicCalendarScreen extends ConsumerStatefulWidget {
-  const CosmicCalendarScreen({super.key,this.initialMonth});
+  const CosmicCalendarScreen({super.key, this.initialMonth});
   final DateTime? initialMonth;
   @override
   ConsumerState<CosmicCalendarScreen> createState() => _CalendarState();
@@ -19,7 +19,12 @@ class CosmicCalendarScreen extends ConsumerStatefulWidget {
 
 class _CalendarState extends ConsumerState<CosmicCalendarScreen> {
   @override
-  void initState(){super.initState();if(widget.initialMonth!=null)month=DateTime(widget.initialMonth!.year,widget.initialMonth!.month);}
+  void initState() {
+    super.initState();
+    if (widget.initialMonth != null)
+      month = DateTime(widget.initialMonth!.year, widget.initialMonth!.month);
+  }
+
   DateTime month = DateTime(DateTime.now().year, DateTime.now().month);
   int? selectedDay;
   int filter = 0;
