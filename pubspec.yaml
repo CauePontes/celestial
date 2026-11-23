@@ -24,3 +24,18 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - assets/stitch/
+  fonts:
+    - family: Noto Symbols
+      fonts:
+        - asset: assets/fonts/NotoSansSymbols.ttf
+    - family: Noto Symbols2
+      fonts:
+        - asset: assets/fonts/NotoSansSymbols2-Regular.ttf
+    - family: Playfair Display
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay.ttf
+    - family: Plus Jakarta Sans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans.ttf

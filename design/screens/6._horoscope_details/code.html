@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container":"#201d32","tertiary-fixed":"#fddfa8","on-secondary-fixed":"#21005e","on-primary":"#39098d","primary-container":"#5532a8","secondary-fixed":"#e8ddff","on-primary-fixed":"#22005d","error":"#ffb4ab","inverse-on-surface":"#312e44","surface-container-highest":"#353249","on-secondary-container":"#bea8ff","background":"#131025","on-error":"#690005","surface-variant":"#353249","surface-container-high":"#2a273d","on-tertiary-container":"#d4b784","on-tertiary-fixed":"#261900","on-tertiary-fixed-variant":"#58441b","on-secondary":"#371c77","on-error-container":"#ffdad6","outline-variant":"#494552","on-surface-variant":"#cbc3d5","secondary-fixed-dim":"#cebdff","surface":"#131025","tertiary-container":"#5c481f","surface-tint":"#cfbdff","on-background":"#e5dffc","surface-container-low":"#1c192e","on-tertiary":"#3f2d06","secondary":"#cebdff","primary-fixed-dim":"#cfbdff","secondary-container":"#4e368f","primary-fixed":"#e9ddff","on-secondary-fixed-variant":"#4e368f","surface-dim":"#131025","primary":"#cfbdff","error-container":"#93000a","inverse-primary":"#6948bd","inverse-surface":"#e5dffc","on-primary-container":"#c5afff","tertiary":"#e0c38e","surface-container-lowest":"#0e0b20","on-surface":"#e5dffc","tertiary-fixed-dim":"#e0c38e","on-primary-fixed-variant":"#502da3","outline":"#948e9e","surface-bright":"#3a364d"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-xl":"2rem","margin":"1.25rem","space-sm":"0.5rem","gutter":"1rem","space-xs":"0.25rem","space-md":"1rem"},"fontFamily":{"body-md":["Plus Jakarta Sans"],"display-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-lg":["Playfair Display"],"headline-sm":["Playfair Display"],"display-lg":["Playfair Display"],"label-md":["Plus Jakarta Sans"]},"fontSize":{"body-md":["15px",{"lineHeight":"23px","fontWeight":"400"}],"display-lg-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"19px","fontWeight":"400"}],"body-lg":["17px",{"lineHeight":"26px","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"500"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"500"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Back" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined">arrow_back_ios_new</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Horoscope Details</h1></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-safe bg-surface"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- Segmented Pill Control -->
+<div aria-label="Horoscope timeframe" class="flex items-center p-space-xs rounded-full bg-surface-container-low shadow-sm" role="tablist">
+<button aria-selected="true" class="timeframe-tab flex-1 py-2.5 px-space-md rounded-full bg-primary-container text-primary-fixed font-label-md text-label-md transition-all duration-200 shadow-sm" data-timeframe="daily" role="tab" type="button">
+      Daily
+    </button>
+<button aria-selected="false" class="timeframe-tab flex-1 py-2.5 px-space-md rounded-full text-on-surface-variant font-label-md text-label-md transition-all duration-200 hover:text-on-surface" data-timeframe="weekly" role="tab" type="button">
+      Weekly
+    </button>
+<button aria-selected="false" class="timeframe-tab flex-1 py-2.5 px-space-md rounded-full text-on-surface-variant font-label-md text-label-md transition-all duration-200 hover:text-on-surface" data-timeframe="monthly" role="tab" type="button">
+      Monthly
+    </button>
+</div>
+<!-- Date, Moon Phase & Share Subheader -->
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0" style="font-variation-settings: 'FILL' 1;">brightness_2</span>
+<p class="font-label-md text-label-md text-tertiary uppercase tracking-wider truncate" id="horoscope-date">
+        October 14 • Waxing Gibbous
+      </p>
+</div>
+<button aria-label="Share horoscope reading" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shrink-0 shadow-sm" id="share-reading-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+</button>
+</div>
+<!-- Editorial Reading Section -->
+<section class="relative flex flex-col gap-space-md rounded-xl bg-surface-container-low p-space-lg shadow-md overflow-hidden">
+<!-- Subtle Celestial Orbital Accent -->
+<svg aria-hidden="true" class="absolute -right-10 -top-10 w-40 h-40 text-primary/10 pointer-events-none" fill="none" viewbox="0 0 160 160">
+<circle cx="80" cy="80" r="68" stroke="currentColor" stroke-dasharray="3 5" stroke-width="1"></circle>
+<circle cx="80" cy="80" r="46" stroke="currentColor" stroke-width="0.75"></circle>
+<circle cx="126" cy="80" fill="#e0c38e" fill-opacity="0.6" r="3"></circle>
+</svg>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Libra • Air Sign</span>
+</div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface" id="horoscope-headline">
+      Quiet clarity in your conversations
+    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant" id="horoscope-body">
+      With Venus softening the edges of today’s lunar transit, you may notice a gentle shift in how others receive your words. Rather than rushing to smooth over every silence, allow space for honest pauses. A thoughtful question asked in calm confidence will open a door that persistence alone could not.
+    </p>
+</section>
+<!-- Structured Insight Cards -->
+<section aria-label="Celestial insights" class="flex flex-col gap-space-md">
+<!-- Love & Relationships -->
+<article class="flex flex-col gap-space-sm rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Love &amp; Relationships</h3>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary shrink-0">Venusian</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="insight-love">
+        Shared stillness speaks louder than grand gestures tonight. Listen for what is left unsaid, and offer warmth without trying to fix the moment.
+      </p>
+<p class="font-label-sm text-label-sm text-outline pt-space-xs">
+        Illustrative astrological reading
+      </p>
+</article>
+<!-- Career & Purpose -->
+<article class="flex flex-col gap-space-sm rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Career &amp; Purpose</h3>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary shrink-0">Aligned</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="insight-career">
+        A collaborative project benefits from your natural sense of balance. Step back to review the broader structure before committing to next steps.
+      </p>
+<p class="font-label-sm text-label-sm text-outline pt-space-xs">
+        Illustrative astrological reading
+      </p>
+</article>
+<!-- Wellness & Energy -->
+<article class="flex flex-col gap-space-sm rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Wellness &amp; Energy</h3>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary shrink-0">Grounded</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="insight-wellness">
+        Protect your evening peace by dimming screens an hour earlier. Gentle breathwork or a slow walk under the night sky will restore your equilibrium.
+      </p>
+<p class="font-label-sm text-label-sm text-outline pt-space-xs">
+        Illustrative astrological reading
+      </p>
+</article>
+</section>
+</div>
+<script>
+  (function () {
+    const readings = {
+      daily: {
+        date: "October 14 \u2022 Waxing Gibbous",
+        headline: "Quiet clarity in your conversations",
+        body: "With Venus softening the edges of today\u2019s lunar transit, you may notice a gentle shift in how others receive your words. Rather than rushing to smooth over every silence, allow space for honest pauses. A thoughtful question asked in calm confidence will open a door that persistence alone could not.",
+        love: "Shared stillness speaks louder than grand gestures tonight. Listen for what is left unsaid, and offer warmth without trying to fix the moment.",
+        career: "A collaborative project benefits from your natural sense of balance. Step back to review the broader structure before committing to next steps.",
+        wellness: "Protect your evening peace by dimming screens an hour earlier. Gentle breathwork or a slow walk under the night sky will restore your equilibrium."
+      },
+      weekly: {
+        date: "Oct 14 \u2013 Oct 20 \u2022 Full Moon Ahead",
+        headline: "Harmonies built on patient timing",
+        body: "This week invites you to recalibrate your commitments around what genuinely nourishes you. Midweek brings a welcome clearing of mental fog, making it easier to articulate boundaries with grace. Trust that steady, unhurried progress carries more weight than sudden bursts of effort.",
+        love: "An honest conversation midweek deepens mutual trust. Let curiosity lead when navigating differing perspectives.",
+        career: "Your diplomatic touch resolves a lingering bottleneck. Focus on refining one key deliverable rather than scattering your attention.",
+        wellness: "Prioritize restorative sleep and warm, grounding meals as the lunar cycle builds toward fullness."
+      },
+      monthly: {
+        date: "October \u2022 Libra Season",
+        headline: "Stepping into your quiet radiance",
+        body: "As the Sun illuminates your sign, October asks you to honor both your need for connection and your need for solitude. Creative ideas that felt distant last month now take tangible shape. Move at a pace that feels sustainable, letting beauty and intention guide your choices.",
+        love: "Authenticity draws the right people closer. Celebrate small rituals of affection that anchor your closest bonds.",
+        career: "A season of thoughtful expansion begins. Align your daily habits with your longer-term creative vision.",
+        wellness: "Balance social warmth with quiet mornings. Journaling or gentle stretching will keep your energy centered."
+      }
+    };
+
+    const tabs = document.querySelectorAll(".timeframe-tab");
+    const dateEl = document.getElementById("horoscope-date");
+    const headlineEl = document.getElementById("horoscope-headline");
+    const bodyEl = document.getElementById("horoscope-body");
+    const loveEl = document.getElementById("insight-love");
+    const careerEl = document.getElementById("insight-career");
+    const wellnessEl = document.getElementById("insight-wellness");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const key = tab.getAttribute("data-timeframe");
+        const data = readings[key];
+        if (!data) return;
+
+        tabs.forEach((t) => {
+          const isActive = t === tab;
+          t.setAttribute("aria-selected", isActive ? "true" : "false");
+          t.classList.toggle("bg-primary-container", isActive);
+          t.classList.toggle("text-primary-fixed", isActive);
+          t.classList.toggle("shadow-sm", isActive);
+          t.classList.toggle("text-on-surface-variant", !isActive);
+        });
+
+        dateEl.textContent = data.date;
+        headlineEl.textContent = data.headline;
+        bodyEl.textContent = data.body;
+        loveEl.textContent = data.love;
+        careerEl.textContent = data.career;
+        wellnessEl.textContent = data.wellness;
+      });
+    });
+  })();
+</script></main></body></html>

@@ -1,61 +1,72 @@
-# Celestial · Day 1
+# Celestial
 
-Original Flutter frontend for iOS and Android, with a web target for local review.
-Only the foundation stage is implemented. No backend, account service, payments,
-remote content, or AI integrations exist.
+Frontend Flutter completo e offline, baseado nas 12 telas exportadas do Google
+Stitch em `design/`, com os fluxos de apoio da lista-mestra do AGENTS.md.
 
-## Run
+**[Relatório de implementação, cobertura e limitações](docs/stitch-implementation.md)**
+· **[Galeria renderizada em Flutter](docs/previews/README.md)**
+· **[Inventário das exportações](docs/design-inventory.json)**
+
+## Executar
 
 ```sh
 flutter pub get
-flutter run -d chrome --web-port 5180
+flutter run -d chrome --web-port 5181 --no-web-resources-cdn
 ```
 
-Use `flutter run` with an attached Android/iOS device for mobile. Building iOS
-requires macOS and Xcode. This Windows environment cannot verify the iOS build.
+O aplicativo começa em Splash → Welcome → Intro → autenticação demo/visitante →
+Birth Details → Interests → Home. Use dados de exemplo. A autenticação não envia
+nem armazena credenciais. Para Android/iOS com dispositivo disponível:
 
-## Included in Day 1
+```sh
+flutter run
+```
 
-- Exact dark celestial palette, editorial system serif headings, system body
-  typography, original orbit illustrations drawn with CustomPainter.
-- Demonstration Home, preview skeletons for Astrology, Love and Wellness,
-  and a Profile foundation with a working language selector.
-- Exactly five tabs using GoRouter StatefulShellRoute.indexedStack; branch
-  navigation and scroll positions are retained.
-- Reusable scaffold, cosmic background, surface and insight cards, hero card,
-  feature tiles, section headers, primary/secondary buttons, text field, empty
-  state, static skeleton, preview badges, demo notice and bottom navigation.
-- Flutter generated ARB localization with en_US/es_US, preferred device language
-  list resolution, English fallback, localized dates, and persisted override.
-- Riverpod-injected InterpretationRepository / MockInterpretationRepository,
-  immutable interpretation, UserProfile and DemoSession models.
+Compilar iOS exige macOS/Xcode. Este projeto foi verificado no Windows com
+Flutter 3.38.5 / Dart 3.10.4, Android SDK e Chrome.
 
-The Profile language selector is included now because it is a Day 1 acceptance
-criterion; onboarding, account forms and full feature flows remain later work.
-Preview tiles open honest explanatory sheets or navigate to their relevant tab.
-Skeleton lines describe unfinished sections and do not imply an active request.
+## Estrutura
 
-## Architecture and decisions
+```text
+lib/
+  app/          # GoRouter, temas, idioma/aparência persistidos
+  core/         # modelos imutáveis, estado Riverpod, contratos mock, widgets
+  features/
+    onboarding/ auth/ home/ astrology/ numerology/ love/
+    wellness/ journal/ community/ engagement/ premium/ profile/
+  l10n/         # ARBs en/es + variantes US e localização oficial gerada
+assets/
+  fonts/        # Playfair Display, Plus Jakarta Sans, Noto Symbols + licenças OFL
+  stitch/       # nove imagens locais referenciadas nos HTMLs + proveniência
+design/         # exportações originais preservadas como referência
+test/           # integração de widgets, estado, localização, cobertura e auditoria
+tool/           # importação de assets, geração de ícones e renderização
+docs/           # inventário, relatório e previews reais do Flutter
+```
 
-`lib/app` contains theme, router and preference state. `lib/core` contains shared
-widgets and immutable demonstration models. `lib/features` contains presentation
-screens. `lib/l10n` contains both base language files (required by gen_l10n) and
-US regional variants. Keep corresponding translations aligned when editing.
+Há cinco abas persistentes: Home, Astrology, Love, Wellness e Profile.
+As telas exportadas têm widgets reais, e seus destinos secundários estão
+implementados. O relatório lista as 44 telas da lista-mestra e as rotas extras.
 
-All visible copy and illustrative interpretation text are localized in ARB.
-InterpretationRepository returns typed immutable values and is replaceable via
-Riverpod. It performs no calculation or network access. The sample Virgo badge
-is explicitly labeled as a sample and does not represent the visitor's sign.
+## Dados e persistência
 
-Only the manual language preference is stored in SharedPreferences. Choosing
-device language removes the override. Birth information is not collected yet;
-DemoSession is an in-memory guest model. No journal storage is implemented.
+Riverpod injeta CatalogRepository, InterpretationRepository, PremiumRepository
+e NotificationRepository, com implementações mock substituíveis. Leituras,
+cartas, números, eventos e escores são ilustrativos e assim identificados.
+Nenhum cálculo astrológico/numerológico complexo é alegado.
 
-System font fallbacks avoid runtime font downloads and unlicensed bundled assets.
-The artwork is original code, has no external image dependency, and is decorative.
-No custom animation is enabled in this stage; Material handles reduced motion.
+Idioma e aparência persistem em SharedPreferences. Dados pessoais da demo,
+parceiro, interesses, diário, posts/comentários, favoritos e progresso ficam
+em memória durante a sessão e reiniciam quando o processo fecha.
+A lista de idiomas do dispositivo é resolvida em ordem (en-* / es-*), com
+fallback en_US e prioridade da escolha manual.
 
-## Verification
+Nenhum backend, banco de dados, SDK de IA, compra, integração de calendário ou
+autenticação real foi implementado. Sem áudio licenciado exportado, o player
+informa indisponibilidade e permanece desabilitado. A respiração é animada
+e funcional. Planos mostram preços ilustrativos USD e checkout desabilitado.
+
+## Verificar
 
 ```sh
 dart format .
@@ -64,10 +75,13 @@ flutter test
 flutter build apk --debug
 ```
 
-Five tests cover preferred language ordering/fallback, persisted override and
-reset, five-tab navigation and retained scroll, preview-sheet dismissal,
-device Spanish/manual English switching, and Spanish layouts at 375 × 812
-with 200% text scaling. Final execution results and environment limits are in
-`docs/day-1-report.md`.
+Regenerar as renderizações de revisão e ícones próprios (ferramentas opcionais):
 
-Do not start Day 2 until explicitly requested.
+```sh
+flutter test tool/render_previews_test.dart --update-goldens
+flutter test tool/generate_icons_test.dart
+```
+
+As fontes e imagens estão incluídas localmente; não é preciso executar o
+importador de assets para usar o projeto. As licenças das fontes e as origens
+dos arquivos estão preservadas em `assets/`.

@@ -1,130 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import '../../app/theme/app_colors.dart';
-import '../../core/demo/interpretation_repository.dart';
+import '../../core/demo/catalog_repository.dart';
+import '../../core/demo/prototype_controller.dart';
+import '../../core/utils/context_extensions.dart';
 import '../../core/widgets/components.dart';
-import '../../core/widgets/preview_sheet.dart';
-import '../../l10n/app_localizations.dart';
+import '../../core/widgets/celestial_badges.dart';
 import 'astrology_hero_card.dart';
+import '../../core/widgets/stitch_layout.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = AppLocalizations.of(context);
-    final hour = DateTime.now().hour;
+    final l = context.l;
+    final state = ref.watch(prototypeProvider);
+    final now = DateTime.now(), hour = DateTime.now().hour;
     final greeting = hour < 12
-        ? l.morning
-        : (hour < 18 ? l.afternoon : l.evening);
-    final insight = ref.watch(interpretationRepositoryProvider).getHoroscope(l);
-    return CelestialScaffold(
+        ? l.greetingMorning
+        : (hour < 18 ? l.greetingAfternoon : l.greetingEvening);
+    final name = state.profile.name.trim().isEmpty
+        ? l.explorer
+        : state.profile.name.split(' ').first;
+    final events = ref
+        .watch(catalogRepositoryProvider)
+        .events(l, DateTime(now.year, now.month));
+    return PageFrame(
+      title: l.home,
+      back: false,
       children: [
-        Row(
+        Wrap(
+          spacing: 12,
+          runSpacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Expanded(
-              child: Text(
-                l.appName,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge?.copyWith(letterSpacing: 2),
-              ),
-            ),
-            IconButton(
-              tooltip: l.notifications,
-              icon: const Icon(Icons.notifications_none_outlined),
-              onPressed: () => showFeaturePreview(
-                context,
-                l.notifications,
-                body: l.notificationsBody,
-              ),
-            ),
+            ZodiacBadge(label: l.sampleSunMoon),
+            const PreviewBadge(),
           ],
         ),
+        const SizedBox(height: 12),
+        Text(
+          '$greeting, $name',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
         const SizedBox(height: 28),
-        Text(greeting, style: Theme.of(context).textTheme.headlineMedium),
-        const SizedBox(height: 8),
-        Text(l.homeSubtitle, style: Theme.of(context).textTheme.bodySmall),
+        const AstrologyHeroCard(),
         const SizedBox(height: 24),
-        AstrologyHeroCard(onPressed: () => context.go('/astrology')),
-        const SizedBox(height: 20),
-        const DemoNotice(),
-        const SizedBox(height: 24),
-        InsightCard(title: insight.title, body: insight.body),
-        SectionHeader(l.yourRituals),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final items = [
-              (Icons.auto_awesome_outlined, l.horoscope, '/astrology'),
-              (Icons.radar_outlined, l.birthChart, '/astrology'),
-              (Icons.favorite_border, l.compatibility, '/love'),
-              (Icons.spa_outlined, l.meditate, '/wellness'),
-            ];
-            final narrow =
-                constraints.maxWidth < 300 ||
-                MediaQuery.textScalerOf(context).scale(16) > 24;
-            return Wrap(
-              spacing: 12,
-              runSpacing: 12,
-              children: [
-                for (final item in items)
-                  SizedBox(
-                    width: narrow
-                        ? constraints.maxWidth
-                        : (constraints.maxWidth - 12) / 2,
-                    child: FeatureTile(
-                      icon: item.$1,
-                      title: item.$2,
-                      onTap: () => context.go(item.$3),
-                    ),
-                  ),
-              ],
-            );
-          },
-        ),
-        SectionHeader(l.exploreMore),
-        SurfaceCard(
-          padding: 4,
-          child: Column(
-            children: [
-              for (final item in [
-                (Icons.tag, l.numerology),
-                (Icons.book_outlined, l.journal),
-                (Icons.people_outline, l.community),
-              ])
-                ListTile(
-                  leading: Icon(item.$1, color: AppColors.lavender),
-                  title: Text(item.$2),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => showFeaturePreview(context, item.$2),
-                ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 24),
-        SurfaceCard(
+        StitchCard(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.brightness_4_outlined, color: AppColors.gold),
+              const CircleAvatar(
+                radius: 18,
+                backgroundColor: AppColors.surfaceElevated,
+                child: Icon(
+                  Icons.auto_awesome_outlined,
+                  color: AppColors.gold,
+                  size: 19,
+                ),
+              ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      l.premium,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
+                    Kicker(l.insightTitle),
                     const SizedBox(height: 8),
                     Text(
-                      l.premiumBody,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      l.comingLater,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      l.insightQuote,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),
@@ -132,6 +78,117 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
         ),
+        SectionTitle(l.sanctuary, action: l.quickAccess),
+        AdaptiveGrid(
+          children: [
+            FeatureTile(
+              icon: Icons.flare_outlined,
+              title: l.birthChart,
+              subtitle: l.housesAspects,
+              onTap: () => context.push('/birth-chart'),
+            ),
+            FeatureTile(
+              icon: Icons.tag,
+              title: l.numerology,
+              subtitle: l.lifePathSeven,
+              onTap: () => context.push('/numerology'),
+            ),
+            FeatureTile(
+              icon: Icons.air,
+              title: l.breathing,
+              subtitle: l.calmBreath,
+              onTap: () => context.push('/breathing'),
+            ),
+            FeatureTile(
+              icon: Icons.edit_note,
+              title: l.journal,
+              subtitle: l.eveningReflection,
+              onTap: () => context.push('/journal'),
+            ),
+          ],
+        ),
+        SectionTitle(
+          l.cosmicCalendar,
+          action: l.viewAll,
+          onAction: () => context.push('/calendar'),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final event in events)
+                Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: SizedBox(
+                    width: 250,
+                    child: StitchCard(
+                      onTap: () => context.push('/calendar'),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Kicker(
+                            DateFormat.MMMd(l.localeName).format(event.date),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(event.title),
+                          const SizedBox(height: 4),
+                          Text(
+                            l.preview,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 28),
+        StitchCard(
+          gradient: true,
+          onTap: () => context.push('/premium'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Kicker(l.plusHome),
+              const SizedBox(height: 8),
+              Text(l.plusSummary),
+              const SizedBox(height: 12),
+              FilledButton(
+                onPressed: () => context.push('/premium'),
+                child: Text(l.explore),
+              ),
+            ],
+          ),
+        ),
+        SectionTitle(l.exploreMore),
+        StitchCard(
+          padding: 0,
+          child: Column(
+            children: [
+              MenuRow(
+                icon: Icons.explore_outlined,
+                title: l.discover,
+                onTap: () => context.push('/discover'),
+              ),
+              MenuRow(
+                icon: Icons.people_outline,
+                title: l.community,
+                onTap: () => context.push('/community'),
+              ),
+              MenuRow(
+                icon: Icons.favorite_border,
+                title: l.compatibility,
+                onTap: () => context.go('/love'),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+        const DemoNotice(),
       ],
     );
   }

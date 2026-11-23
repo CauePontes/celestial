@@ -1,0 +1,215 @@
+{
+  "files": [
+    {
+      "file": "design/screens/1._welcome/code.html",
+      "bytes": 8499,
+      "sha256": "fb944f362d80a9ff5ad26cbff64459addae5513da29fa110b95f16dfbbef302d"
+    },
+    {
+      "file": "design/screens/1._welcome/screen.png",
+      "bytes": 275601,
+      "sha256": "dcc02803a4066dd850b6518917de44173831c4ab93f23b8d883d424e4eba4a90"
+    },
+    {
+      "file": "design/screens/10._cosmic_calendar/code.html",
+      "bytes": 26003,
+      "sha256": "bc057b884760d74555eccad493ea8bfe0688b61f04bb8748b5d459b8e47a7ad5"
+    },
+    {
+      "file": "design/screens/10._cosmic_calendar/screen.png",
+      "bytes": 257149,
+      "sha256": "44b7c9cb0b5302c0da5b63fefb336e9a1de17cf8e984eada0e4cd3631ca13c32"
+    },
+    {
+      "file": "design/screens/11._celestial_plus_subscription/code.html",
+      "bytes": 19429,
+      "sha256": "d02b2af33a479cf1d2c6ee63a0549a7b7ed6f6d439608f17432d83d2e7501cc2"
+    },
+    {
+      "file": "design/screens/11._celestial_plus_subscription/screen.png",
+      "bytes": 321985,
+      "sha256": "56108b6575a53e0af91bec107a6d0cc0598cb5e3a43447f274ea937047a9e85b"
+    },
+    {
+      "file": "design/screens/12._natal_chart_deep_dive/code.html",
+      "bytes": 25258,
+      "sha256": "f8eb1eed5f4d0acd23924b4142ea4b67c0c553602703eb4c468cca50d6b6abb8"
+    },
+    {
+      "file": "design/screens/12._natal_chart_deep_dive/screen.png",
+      "bytes": 285959,
+      "sha256": "84869cec57c6f463f2375a408bbe2ce735edccc427ab603c51550a3ca41f780d"
+    },
+    {
+      "file": "design/screens/2._birth_details/code.html",
+      "bytes": 11713,
+      "sha256": "4fbcc82ca0b184e9a6424b6bb65138e49d2edc1ad459b6e042fc93ac5a8448fb"
+    },
+    {
+      "file": "design/screens/2._birth_details/screen.png",
+      "bytes": 170136,
+      "sha256": "0b2126789f95e85cf6e0d7d38173322a844af618c565b578a7e178cd6a5c077f"
+    },
+    {
+      "file": "design/screens/3._interests/code.html",
+      "bytes": 14754,
+      "sha256": "c0a107bc993b9fe42dd55afec799115ca98ba26162f377c7e5994b78060e7098"
+    },
+    {
+      "file": "design/screens/3._interests/screen.png",
+      "bytes": 253311,
+      "sha256": "274952d7b3d17658e6da52ea106b87fa0dd37933af460dd96337493152b65277"
+    },
+    {
+      "file": "design/screens/4._home/code.html",
+      "bytes": 16044,
+      "sha256": "9ca33818cd20e381763b0a09419e39ac74098dc7b0705d75172e464d93147345"
+    },
+    {
+      "file": "design/screens/4._home/screen.png",
+      "bytes": 269671,
+      "sha256": "eae32c59b7a02bebb3b930ac8a657a7ea7a2ee02b006d57ee20b951327d45b85"
+    },
+    {
+      "file": "design/screens/5._astrology_hub/code.html",
+      "bytes": 20987,
+      "sha256": "442d7cc2517e268f939f4414f92ba5b2fdadc9e9e8426aec381cd06db66caecb"
+    },
+    {
+      "file": "design/screens/5._astrology_hub/screen.png",
+      "bytes": 265320,
+      "sha256": "916165c1b60103cc9974c30ae33b3610c37d5424d781b13ed790a6c8370c2c48"
+    },
+    {
+      "file": "design/screens/6._horoscope_details/code.html",
+      "bytes": 15381,
+      "sha256": "46574ae8439025a1ba551e8a6e4b48cef0d1acafaa1b9515f020f4c3ce250c01"
+    },
+    {
+      "file": "design/screens/6._horoscope_details/screen.png",
+      "bytes": 321400,
+      "sha256": "39ecfbca066a4ab93771663023d81044c882715f177211e47871b6e3eee22b4c"
+    },
+    {
+      "file": "design/screens/7._love_hub/code.html",
+      "bytes": 16755,
+      "sha256": "bb62a182590e1abbc709da2157a672c1723b03366361dd2605b0394207723d8d"
+    },
+    {
+      "file": "design/screens/7._love_hub/screen.png",
+      "bytes": 357046,
+      "sha256": "bd7658aee98552d22d2899c54c845e7e1da6127df838361eba26741392e71137"
+    },
+    {
+      "file": "design/screens/8._wellness_hub/code.html",
+      "bytes": 16443,
+      "sha256": "fba09fd1c8d4f47726daea9fabb5b5d0f1ffdcc013533160bcb9479c6446f747"
+    },
+    {
+      "file": "design/screens/8._wellness_hub/screen.png",
+      "bytes": 259162,
+      "sha256": "d7da72b10f511c60b78c55cbac4ec6e1729e8a688a6ac609ab979c3873bdef5a"
+    },
+    {
+      "file": "design/screens/9._profile/code.html",
+      "bytes": 24955,
+      "sha256": "8121919b70bab47c1791d4b00909dbe91a852151ef0732aece49f9c20871a897"
+    },
+    {
+      "file": "design/screens/9._profile/screen.png",
+      "bytes": 218812,
+      "sha256": "faa24ae5cf76ac5363092bc694f53d31a8a3fc1ec05e7ebfa55ed833c8a2ae9c"
+    },
+    {
+      "file": "design/screens/celestial/DESIGN.md",
+      "bytes": 9649,
+      "sha256": "e32ed8978a251a43247ea5f41a213f9397c9f9c8bf8632d9a9e1fe977403c34e"
+    }
+  ],
+  "screens": [
+    {
+      "folder": "1._welcome",
+      "name": "Welcome",
+      "route": "/welcome",
+      "implementation": "lib/features/onboarding/entry_screens.dart",
+      "preview": "docs/previews/01-welcome.png"
+    },
+    {
+      "folder": "2._birth_details",
+      "name": "Birth Details",
+      "route": "/birth-details",
+      "implementation": "lib/features/onboarding/birth_details_screen.dart",
+      "preview": "docs/previews/02-birth-details.png"
+    },
+    {
+      "folder": "3._interests",
+      "name": "Interests",
+      "route": "/interests",
+      "implementation": "lib/features/onboarding/interests_screen.dart",
+      "preview": "docs/previews/03-interests.png"
+    },
+    {
+      "folder": "4._home",
+      "name": "Home",
+      "route": "/home",
+      "implementation": "lib/features/home/home_screen.dart",
+      "preview": "docs/previews/04-home.png"
+    },
+    {
+      "folder": "5._astrology_hub",
+      "name": "Astrology Hub",
+      "route": "/astrology",
+      "implementation": "lib/features/astrology/astrology_hub_screen.dart",
+      "preview": "docs/previews/05-astrology.png"
+    },
+    {
+      "folder": "6._horoscope_details",
+      "name": "Horoscope Details",
+      "route": "/horoscope",
+      "implementation": "lib/features/astrology/horoscope_screen.dart",
+      "preview": "docs/previews/06-horoscope.png"
+    },
+    {
+      "folder": "7._love_hub",
+      "name": "Love Hub",
+      "route": "/love",
+      "implementation": "lib/features/love/love_hub_screen.dart",
+      "preview": "docs/previews/07-love.png"
+    },
+    {
+      "folder": "8._wellness_hub",
+      "name": "Wellness Hub",
+      "route": "/wellness",
+      "implementation": "lib/features/wellness/wellness_hub_screen.dart",
+      "preview": "docs/previews/08-wellness.png"
+    },
+    {
+      "folder": "9._profile",
+      "name": "Profile",
+      "route": "/profile",
+      "implementation": "lib/features/profile/profile_screen.dart",
+      "preview": "docs/previews/09-profile.png"
+    },
+    {
+      "folder": "10._cosmic_calendar",
+      "name": "Cosmic Calendar",
+      "route": "/calendar",
+      "implementation": "lib/features/engagement/cosmic_calendar_screen.dart",
+      "preview": "docs/previews/10-calendar.png"
+    },
+    {
+      "folder": "11._celestial_plus_subscription",
+      "name": "Celestial Plus Subscription",
+      "route": "/premium",
+      "implementation": "lib/features/premium/premium_screen.dart",
+      "preview": "docs/previews/11-subscription.png"
+    },
+    {
+      "folder": "12._natal_chart_deep_dive",
+      "name": "Natal Chart Deep Dive",
+      "route": "/birth-chart",
+      "implementation": "lib/features/astrology/birth_chart_screen.dart",
+      "preview": "docs/previews/12-natal-chart.png"
+    }
+  ]
+}

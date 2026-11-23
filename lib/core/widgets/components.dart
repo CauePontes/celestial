@@ -7,9 +7,9 @@ class CosmicBackground extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) => DecoratedBox(
-    decoration: const BoxDecoration(
-      color: AppColors.background,
-      gradient: RadialGradient(
+    decoration: BoxDecoration(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      gradient: const RadialGradient(
         center: Alignment.topRight,
         radius: 1,
         colors: [Color(0x225532A8), Color(0x00141126)],

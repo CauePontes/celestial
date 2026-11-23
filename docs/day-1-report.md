@@ -1,3 +1,5 @@
+> Registro histórico do Dia 1. A versão completa atual está em [stitch-implementation.md](stitch-implementation.md).
+
 # Dia 1 — Fundação e identidade visual
 
 ## Implementação
