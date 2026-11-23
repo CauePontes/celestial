@@ -185,7 +185,31 @@ SDK de IA, integração de calendário, serviço de pagamento ou compra real.
 
 ## Verificações e execução
 
-Os resultados finais serão registrados após a última execução dos comandos.
+### Resultados finais
+
+| Comando / verificação | Resultado |
+| --- | --- |
+| `flutter pub get` | Aprovado |
+| `dart format .` | Executado; 68 arquivos Dart verificados |
+| `flutter analyze --no-pub` | Aprovado, sem problemas |
+| `flutter test --no-pub` | **23 testes aprovados** |
+| `flutter test tool/render_previews_test.dart --update-goldens` | **12 renderizações aprovadas** |
+| `flutter test tool/generate_icons_test.dart` | Aprovado; ícones originais gerados |
+| `flutter build apk --debug --no-pub` | Aprovado; APK de 168.344.789 bytes |
+| `flutter run -d chrome --web-port 5181 --no-web-resources-cdn --no-pub` | Compilou, conectou o serviço de debug e iniciou main |
+| `git diff --check` | Sem erros de whitespace |
+| XML do LaunchScreen iOS | Bem formado; não substitui compilação Xcode |
+| Compilação iOS / aparelhos físicos / leitores de tela nativos | Não executados neste ambiente Windows |
+
+A compilação Android foi executada com `GRADLE_OPTS=-Dorg.gradle.daemon=false`
+apenas no processo do comando, para evitar reutilizar um daemon com estado de
+rede anterior. Não houve mudança global de configuração Gradle.
+
+APK: [app-debug.apk](../build/app/outputs/flutter-apk/app-debug.apk).
+A suíte de favoritos também verifica restauração do signo, período e data da
+leitura salva. As correções de estilo posteriores à compilação não alteram
+comportamento. Os logs locais de execução não são versionados.
+
 As prévias em `docs/previews/` foram renderizadas pelo Flutter a 390 × 884 com
 as fontes reais e comparadas visualmente às referências. Capturas adicionais
 mostram seções após rolagem. Regeneração:
