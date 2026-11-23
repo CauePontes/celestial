@@ -137,14 +137,6 @@ void main() {
     await tapVisible(tester, find.text('Horoscope'));
     expect(find.text('Harmonies built on patient timing'), findsOneWidget);
     expect(find.text('November 22, 2026'), findsOneWidget);
-    expect(
-      container
-          .read(routerProvider)
-          .routeInformationProvider
-          .value
-          .uri
-          .queryParameters['sign'],
-      '3',
-    );
+    expect(find.text('CANCER · WATER'), findsOneWidget);
   });
 }

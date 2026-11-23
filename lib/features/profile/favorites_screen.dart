@@ -62,14 +62,17 @@ class FavoritesScreen extends ConsumerWidget {
     final parts = id.split('-');
     if (id.startsWith('feature-')) return id.substring(8);
     if (id.startsWith('meditation-')) return '/meditation/${id.substring(11)}';
-    if (id.startsWith('event-') && parts.length >= 4)
+    if (id.startsWith('event-') && parts.length >= 4) {
       return '/calendar?month=${parts[parts.length - 2]}-${parts.last.padLeft(2, '0')}-01';
+    }
     if (id.startsWith('numerology')) return '/numerology-report';
     if (id.startsWith('compatibility')) return '/compatibility-report';
-    if (id.startsWith('insight') && parts.length >= 3)
+    if (id.startsWith('insight') && parts.length >= 3) {
       return '/insight?kind=${parts[1]}&index=${parts[2]}';
-    if (parts.length >= 6)
+    }
+    if (parts.length >= 6) {
       return '/horoscope?sign=${parts[1]}&period=${parts[2]}&date=${parts[3]}-${parts[4].padLeft(2, '0')}-${parts[5].padLeft(2, '0')}';
+    }
     return '/horoscope';
   }
 

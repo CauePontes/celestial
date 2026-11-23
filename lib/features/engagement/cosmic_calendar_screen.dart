@@ -21,8 +21,9 @@ class _CalendarState extends ConsumerState<CosmicCalendarScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.initialMonth != null)
+    if (widget.initialMonth != null) {
       month = DateTime(widget.initialMonth!.year, widget.initialMonth!.month);
+    }
   }
 
   DateTime month = DateTime(DateTime.now().year, DateTime.now().month);
